@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 48 20% 97%;
+        --foreground: 0 0% 7%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 7%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 7%;
+        --primary: 0 0% 7%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 40 25% 94%;
+        --secondary-foreground: 0 0% 9%;
+        --muted: 40 25% 94%;
+        --muted-foreground: 0 0% 42%;
+        --accent: 36 46% 50%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 40 14% 89%;
+        --input: 40 14% 89%;
+        --ring: 36 46% 50%;
+        --radius: 1.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-edn-warm text-edn-ink;
+        font-family: 'Inter', system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        margin: 0;
+    }
+    h1, h2, h3, h4 {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+}
+
+/* ---------- Selection ---------- */
+::selection {
+    background: rgba(184, 138, 69, 0.22);
+    color: #111111;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #F5F2EC; }
+::-webkit-scrollbar-thumb { background: #d9cfbd; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #B88A45; }
+
+/* ---------- Custom cursor ---------- */
+body.custom-cursor-active,
+body.custom-cursor-active * {
+    cursor: none !important;
+}
+
+/* ---------- Utilities ---------- */
+.glass {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+.glass-soft {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+.text-shimmer-star {
+    background: linear-gradient(110deg, #B88A45 30%, #f0dcae 50%, #B88A45 70%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.bronze-line-gradient {
+    background: linear-gradient(90deg, #B88A45, #e6c987, #B88A45);
+    background-size: 200% 100%;
+}
+.tracking-luxe { letter-spacing: 0.18em; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}

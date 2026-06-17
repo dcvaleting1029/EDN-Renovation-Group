@@ -1,0 +1,8 @@
+.App {
+    min-height: 100vh;
+    background-color: #F8F8F6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
