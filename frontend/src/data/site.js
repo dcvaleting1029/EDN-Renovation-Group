@@ -19,7 +19,6 @@ export const NAV_LINKS = [
   { label: "About Us", id: "showcase" },
   { label: "Process", id: "process" },
   { label: "Reviews", id: "reviews" },
-  { label: "Contact", id: "contact" },
 ];
 
 export const TRUST = [
