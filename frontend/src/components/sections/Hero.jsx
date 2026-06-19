@@ -90,10 +90,10 @@ export const Hero = ({ revealed }) => {
           variants={reveal(0.25)}
           initial="hidden"
           animate={animState}
-          className="mt-5 max-w-[12ch] font-serif text-[14vw] font-light leading-[0.95] tracking-tight text-edn-ink sm:text-7xl lg:text-[5.5rem]"
+          className="mt-5 max-w-[15ch] font-serif text-[12vw] font-light leading-[0.98] tracking-tight text-edn-ink sm:text-6xl lg:text-[5rem]"
           data-testid="hero-heading"
         >
-          Luxury Renovations Crafted To Perfection
+          Edinburgh Home Renovations — Done Properly.
         </motion.h1>
 
         <motion.p
@@ -102,8 +102,8 @@ export const Hero = ({ revealed }) => {
           animate={animState}
           className="mt-6 max-w-[520px] text-base leading-relaxed text-edn-muted sm:text-lg"
         >
-          Transforming homes with exceptional craftsmanship, timeless design and
-          meticulous attention to detail.
+          Kitchens, structural alterations and full internal renovations.
+          Designed, managed and delivered under one roof.
         </motion.p>
 
         <motion.div
