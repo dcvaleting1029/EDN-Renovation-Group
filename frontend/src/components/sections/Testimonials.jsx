@@ -13,7 +13,7 @@ export const Testimonials = () => {
               Client Testimonials
             </p>
             <h2 className="mt-4 font-serif text-4xl font-light leading-tight text-edn-ink sm:text-5xl">
-              Trusted By Homeowners Across Hertfordshire
+              Trusted By Homeowners Across Edinburgh
             </h2>
           </Reveal>
 

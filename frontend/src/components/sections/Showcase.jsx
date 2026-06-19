@@ -43,9 +43,9 @@ export const Showcase = () => {
               transition={{ duration: 0.9, delay: 0.55 }}
               className="mt-5 max-w-xl text-base leading-relaxed text-white/80"
             >
-              For over 15 years EDN Renovation Group has delivered award-worthy
-              homes across Hertfordshire — uniting visionary design with the
-              finest materials and an obsession for detail.
+              For over 15 years EDN Renovation Group has restored and reimagined
+              Edinburgh's Georgian and Victorian homes — uniting period character
+              with the finest materials and an obsession for detail.
             </motion.p>
             <motion.button
               initial={{ opacity: 0, y: 20 }}

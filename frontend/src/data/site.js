@@ -3,10 +3,11 @@ const u = (id, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=80&w=${w}`;
 
 export const IMAGES = {
-  hero: u("1613490493576-7fde63acd811", 2400),
-  showcase: u("1583847268964-b28dc8f51f92", 2200),
-  processBg: u("1600596542815-ffad4c1539a9", 1600),
-  contactBg: u("1600607687939-ce8a6c25118c", 2000),
+  // Authentic Edinburgh architecture — Dean Village, New Town & Old Town
+  hero: u("1610991136128-838ca3c5497b", 2400),
+  showcase: u("1763133928914-3cb3b2e95cff", 2200),
+  processBg: u("1595599014147-a419c147bdc0", 1600),
+  contactBg: u("1709531766566-7e26b3ea582d", 2000),
   beforeImg: u("1556909114-f6e7ad7d3136", 1400),
   afterImg: u("1600607687939-ce8a6c25118c", 1400),
 };
@@ -29,7 +30,7 @@ export const TRUST = [
 ];
 
 export const SERVICES = [
-  { title: "Extensions", icon: "Maximize2", img: u("1600585154340-be6161a56a0c", 1200), desc: "Seamless single & double-storey extensions that expand your living space." },
+  { title: "Extensions", icon: "Maximize2", img: u("1573558098539-394235f962b3", 1200), desc: "Sympathetic extensions to Edinburgh period homes that expand your living space." },
   { title: "Full Renovations", icon: "Hammer", img: u("1600210492486-724fe5c67fb0", 1200), desc: "Complete home transformations from concept to flawless completion." },
   { title: "Kitchens", icon: "ChefHat", img: u("1556911220-bff31c812dba", 1200), desc: "Bespoke luxury kitchens crafted around how you live and entertain." },
   { title: "Bathrooms", icon: "Bath", img: u("1600566753086-00f18fb6b3ea", 1200), desc: "Spa-grade bathrooms with premium finishes and faultless detail." },
@@ -59,18 +60,18 @@ export const TESTIMONIALS = [
 ];
 
 export const GALLERY = [
-  { title: "Belgravia Kitchen", img: u("1556912172-45b7abe8b7e1", 1100), tall: true },
-  { title: "Chiltern Bathroom", img: u("1600566753151-384129cf4e3e", 1100), tall: false },
-  { title: "Hartfield Extension", img: u("1600585154340-be6161a56a0c", 1100), tall: false },
-  { title: "Riverside Loft", img: u("1616594039964-ae9021a400a0", 1100), tall: true },
-  { title: "Manor Living Room", img: u("1600210492486-724fe5c67fb0", 1100), tall: false },
-  { title: "Garden Pavilion", img: u("1560448204-e02f11c3d0e2", 1100), tall: false },
-  { title: "Penthouse Suite", img: u("1600566753190-17f0baa2a6c3", 1100), tall: true },
-  { title: "Coastal Retreat", img: u("1512917774080-9991f1c4c750", 1100), tall: false },
+  { title: "New Town Kitchen", img: u("1556912172-45b7abe8b7e1", 1100), tall: true },
+  { title: "Stockbridge Bathroom", img: u("1600566753151-384129cf4e3e", 1100), tall: false },
+  { title: "Dean Village Townhouse", img: u("1610991136128-838ca3c5497b", 1100), tall: false },
+  { title: "Morningside Loft", img: u("1616594039964-ae9021a400a0", 1100), tall: true },
+  { title: "New Town Drawing Room", img: u("1600210492486-724fe5c67fb0", 1100), tall: false },
+  { title: "Royal Mile Apartment", img: u("1709531766566-7e26b3ea582d", 1100), tall: false },
+  { title: "Bruntsfield Penthouse", img: u("1600566753190-17f0baa2a6c3", 1100), tall: true },
+  { title: "Grange Villa", img: u("1595599014147-a419c147bdc0", 1100), tall: false },
 ];
 
 export const CONTACT = {
-  phone: "07305 741 940",
+  phone: "0131 526 0140",
   email: "info@ednrenovationgroup.com",
-  location: "Hertfordshire",
+  location: "Edinburgh",
 };
