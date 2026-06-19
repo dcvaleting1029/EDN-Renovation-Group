@@ -60,7 +60,8 @@ export const Contact = () => {
     <section id="contact" className="relative overflow-hidden py-24 lg:py-32">
       <div className="absolute inset-0">
         <img src={IMAGES.contactBg} alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-edn-warm/96 via-edn-warm/70 to-edn-ink/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-edn-warm via-edn-warm/95 to-edn-warm/80" />
+        <div className="absolute inset-0 bg-edn-warm/55" />
       </div>
 
       <div className="relative mx-auto grid max-w-[1480px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2 lg:px-12">

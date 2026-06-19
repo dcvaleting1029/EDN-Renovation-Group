@@ -74,7 +74,7 @@ export const Hero = ({ revealed }) => {
       {/* Content */}
       <motion.div
         style={{ y: textY }}
-        className="relative z-10 mx-auto flex h-full max-w-[1480px] flex-col justify-center px-6 lg:px-12"
+        className="relative z-10 mx-auto flex h-full max-w-[1480px] flex-col justify-center px-6 pt-28 lg:px-12 lg:pt-24"
       >
         <motion.span
           variants={reveal(0)}
