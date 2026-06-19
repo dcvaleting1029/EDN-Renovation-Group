@@ -68,13 +68,6 @@ export const Navigation = () => {
 
         <div className="flex items-center gap-3">
           <button
-            data-testid="nav-cta-quote"
-            onClick={() => scrollTo("contact")}
-            className="hidden rounded-full bg-edn-bronze px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_8px_24px_rgba(184,138,69,0.32)] transition-all duration-300 hover:bg-edn-bronzeDeep hover:scale-[1.04] sm:block"
-          >
-            Get Free Quote
-          </button>
-          <button
             data-testid="nav-mobile-toggle"
             onClick={() => setOpen((v) => !v)}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-edn-divider bg-white/70 lg:hidden"
