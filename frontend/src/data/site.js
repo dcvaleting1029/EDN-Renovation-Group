@@ -46,11 +46,10 @@ export const STATISTICS = [
 ];
 
 export const PROCESS = [
-  { n: "01", title: "Consultation", icon: "MessageSquare", desc: "We discuss your vision, needs and budget." },
-  { n: "02", title: "Design", icon: "PencilRuler", desc: "We create detailed plans and 3D concepts." },
-  { n: "03", title: "Planning", icon: "ClipboardCheck", desc: "We handle all approvals and planning." },
-  { n: "04", title: "Build", icon: "Hammer", desc: "Expert craftsmanship with full project management." },
-  { n: "05", title: "Final Reveal", icon: "Sparkles", desc: "We deliver a flawless finish you'll love." },
+  { n: "1", title: "Initial Phone Consultation", icon: "Phone", desc: "We discuss your project, budget, priorities and rough timescale." },
+  { n: "2", title: "Site Visit", icon: "MapPin", desc: "We assess the property, take details and understand the practical requirements." },
+  { n: "3", title: "Clear Price", icon: "FileText", desc: "You receive a clear quotation based on the agreed scope of works." },
+  { n: "4", title: "Second Site Visit", icon: "ClipboardCheck", desc: "We revisit to run through the quote, refine details, and agree a clear programme before moving forward and agreeing timelines." },
 ];
 
 export const TESTIMONIALS = [
