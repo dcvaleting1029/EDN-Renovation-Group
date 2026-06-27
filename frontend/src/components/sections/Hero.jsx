@@ -67,9 +67,9 @@ export const Hero = ({ revealed }) => {
         </motion.div>
       </motion.div>
 
-      {/* Warm wash for light theme + readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-edn-warm/95 via-edn-warm/55 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-edn-warm/70 via-transparent to-edn-warm/30" />
+      {/* Warm wash for light theme + readability (centered halo) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_58%_at_50%_44%,rgba(248,248,246,0.92),rgba(248,248,246,0.45)_55%,rgba(248,248,246,0.1)_80%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-edn-warm/75 via-transparent to-edn-warm/35" />
 
       {/* Cinematic vignette + golden bloom */}
       <div className="film-vignette pointer-events-none absolute inset-0" />
@@ -102,13 +102,13 @@ export const Hero = ({ revealed }) => {
       {/* Content */}
       <motion.div
         style={{ y: textY }}
-        className="relative z-10 mx-auto flex h-full max-w-[1480px] flex-col justify-center px-6 pt-28 lg:px-12 lg:pt-24"
+        className="relative z-10 mx-auto flex h-full max-w-[1480px] flex-col items-center justify-center px-6 pt-28 text-center lg:px-12 lg:pt-24"
       >
         <motion.span
           variants={reveal(0)}
           initial="hidden"
           animate={animState}
-          className="text-[11px] font-semibold uppercase tracking-[0.32em] text-edn-bronze"
+          className="text-[11px] font-semibold uppercase tracking-[0.5em] text-edn-bronze"
           data-testid="hero-eyebrow"
         >
           Luxury Renovation Specialists
@@ -128,7 +128,7 @@ export const Hero = ({ revealed }) => {
           variants={reveal(0.45)}
           initial="hidden"
           animate={animState}
-          className="mt-6 max-w-[520px] text-base leading-relaxed text-edn-muted sm:text-lg"
+          className="mx-auto mt-8 max-w-[460px] text-base leading-loose text-edn-muted sm:text-lg"
         >
           Kitchens, structural alterations and full internal renovations.
           Designed, managed and delivered under one roof.
@@ -138,7 +138,7 @@ export const Hero = ({ revealed }) => {
           variants={reveal(0.65)}
           initial="hidden"
           animate={animState}
-          className="mt-9 flex flex-wrap items-center gap-4"
+          className="mt-12 flex flex-wrap items-center justify-center gap-4"
         >
           <button
             data-testid="hero-cta-quote"
@@ -157,7 +157,7 @@ export const Hero = ({ revealed }) => {
           </button>
         </motion.div>
 
-        <motion.div variants={reveal(0.9)} initial="hidden" animate={animState} className="mt-12 max-w-3xl">
+        <motion.div variants={reveal(0.9)} initial="hidden" animate={animState} className="mx-auto mt-16 w-full max-w-3xl">
           <TrustBar />
         </motion.div>
       </motion.div>
