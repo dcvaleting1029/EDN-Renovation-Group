@@ -5,7 +5,8 @@ import { NAV_LINKS } from "@/data/site";
 
 const scrollTo = (id) => {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
+  if (!el) return;
+  window.__lenis ? window.__lenis.scrollTo(el, { duration: 1.4 }) : el.scrollIntoView({ behavior: "smooth" });
 };
 
 export const Navigation = () => {

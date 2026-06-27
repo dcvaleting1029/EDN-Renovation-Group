@@ -1,0 +1,32 @@
+{
+  "summary": "Regression + critical-flow testing after cinematic visual upgrade (Lenis + film-grain + parallax hero + 3D tilt + CinematicScenes). Backend pytest (6/6) passes for /api/enquiries (valid, minimal, invalid email 422, missing required 422, sorted newest-first, persistence). Frontend Playwright e2e: hero heading 'Edinburgh Home Renovations — Done Properly.' renders after loader; 2 cinematic-scene blocks render in correct positions (1 after Services, 1 before Contact, after Gallery); 6 service-card-* and 3 testimonial-* render; Lenis attached on window.__lenis; all nav links (Home, Services, Projects, About Us [nav-showcase], Process, Reviews) smooth-scroll to correct anchor offsets; 'Get Free Quote' CTA scrolls to enquiry form; empty submit shows 'Please add your name and email.' toast (no record created and form NOT cleared); valid submit clears form, shows success toast, and the new record appears on /admin (admin-list with admin-item entries).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_enquiries.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Admin page at /admin is still publicly accessible with PII (names, emails, phones). Add basic auth/admin token gate before any production exposure (carry-over from iteration_1).",
+    "EnquiryCreate lacks max_length constraints on name/email/phone/message — public form is open to oversized payloads (carry-over).",
+    "No rate-limit on POST /api/enquiries — easy spam vector for a public form (carry-over).",
+    "NAV_LINKS maps the 'About Us' label to section id 'showcase' (data-testid nav-showcase). This is intentional and works, but the testid hint in the review request ('nav-about') doesn't exist — worth documenting for future test agents.",
+    "Hardcoded scrollTo duration (1.4s) and Lenis duration values are duplicated across Navigation.jsx and lib/scroll.js. Consider centralising in src/lib/scroll.js to avoid drift."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "N/A — no auth; /admin is public.",
+  "seed_data_creation": "Created PWUser_Cinema_<ts> via UI form (visible at /admin) plus 4 TEST_* enquiries via pytest run. They remain in the DB.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Cinematic upgrade is regression-clean. window.__lenis exists; programmatic scrolls via window.__lenis.scrollTo work for all nav links. Important testid notes: About Us nav -> 'nav-showcase' (NOT nav-about) because the section component is Showcase with id='showcase'. Both CinematicScene blocks share data-testid='cinematic-scene' (placement: after Services and after Gallery / before Contact). Section anchor offsets at 1440x900 desktop: home=0, services=900, projects=6090, showcase=4814, process=3924, reviews=5610, contact=8493. Toasts are sonner (role=status). Empty submit returns toast 'Please add your name and email.' and does NOT clear fields. Backend pytest entry: /app/backend/tests/test_enquiries.py.",
+  "rca of the issue": "No bugs encountered."
+}

@@ -1,10 +1,14 @@
-import { useMemo } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useMemo, useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { IMAGES } from "@/data/site";
 import { TrustBar } from "@/components/sections/TrustBar";
 
-const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+const scrollTo = (id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  window.__lenis ? window.__lenis.scrollTo(el, { duration: 1.4 }) : el.scrollIntoView({ behavior: "smooth" });
+};
 
 const ease = [0.22, 1, 0.36, 1];
 const reveal = (delay) => ({
@@ -18,6 +22,19 @@ export const Hero = ({ revealed }) => {
   const textY = useTransform(scrollY, [0, 900], [0, -60]);
   const brightness = useTransform(scrollY, [0, 700], [1, 0.82]);
   const filter = useTransform(brightness, (b) => `brightness(${b})`);
+
+  // Mouse-driven camera movement
+  const heroRef = useRef(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const mxS = useSpring(mx, { stiffness: 60, damping: 18 });
+  const myS = useSpring(my, { stiffness: 60, damping: 18 });
+  const onMouseMove = (e) => {
+    if (!heroRef.current) return;
+    const r = heroRef.current.getBoundingClientRect();
+    mx.set(((e.clientX - r.left) / r.width - 0.5) * 28);
+    my.set(((e.clientY - r.top) / r.height - 0.5) * 20);
+  };
 
   const particles = useMemo(
     () =>
@@ -34,18 +51,29 @@ export const Hero = ({ revealed }) => {
   const animState = revealed ? "show" : "hidden";
 
   return (
-    <section id="home" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-edn-ink">
-      {/* Background w/ parallax + brightness */}
-      <motion.div className="absolute -inset-[8%]" style={{ y: bgY, filter }}>
-        <div
-          className="h-full w-full animate-heroZoom bg-cover bg-center will-change-transform"
-          style={{ backgroundImage: `url(${IMAGES.hero})` }}
-        />
+    <section
+      id="home"
+      ref={heroRef}
+      onMouseMove={onMouseMove}
+      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-edn-ink"
+    >
+      {/* Background w/ parallax + brightness + mouse camera */}
+      <motion.div className="absolute -inset-[10%]" style={{ y: bgY, filter }}>
+        <motion.div className="h-full w-full will-change-transform" style={{ x: mxS, y: myS }}>
+          <div
+            className="h-full w-full animate-heroZoom bg-cover bg-center"
+            style={{ backgroundImage: `url(${IMAGES.hero})` }}
+          />
+        </motion.div>
       </motion.div>
 
       {/* Warm wash for light theme + readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-edn-warm/95 via-edn-warm/55 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-edn-warm/70 via-transparent to-edn-warm/30" />
+
+      {/* Cinematic vignette + golden bloom */}
+      <div className="film-vignette pointer-events-none absolute inset-0" />
+      <div className="pointer-events-none absolute -left-24 -top-10 h-[65%] w-[55%] rounded-full bg-amber-50/25 blur-[130px]" />
 
       {/* Light sweep */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

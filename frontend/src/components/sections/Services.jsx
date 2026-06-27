@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Maximize2, Hammer, ChefHat, Bath, Mountain, Trees } from "lucide-react";
 import { SERVICES } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
+import { TiltCard } from "@/components/TiltCard";
 
 const ICONS = { Maximize2, Hammer, ChefHat, Bath, Mountain, Trees };
 
@@ -23,8 +24,8 @@ export const Services = () => {
           {SERVICES.map((s, i) => {
             const Icon = ICONS[s.icon];
             return (
+              <TiltCard key={s.title} className="h-full">
               <motion.article
-                key={s.title}
                 data-testid={`service-card-${i}`}
                 initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -55,6 +56,7 @@ export const Services = () => {
                   </span>
                 </div>
               </motion.article>
+              </TiltCard>
             );
           })}
         </div>

@@ -10,6 +10,8 @@ export const IMAGES = {
   contactBg: u("1709531766566-7e26b3ea582d", 2000),
   beforeImg: u("1556909114-f6e7ad7d3136", 1400),
   afterImg: u("1600607687939-ce8a6c25118c", 1400),
+  scene1: u("1600210492486-724fe5c67fb0", 2200),
+  scene2: u("1613490493576-7fde63acd811", 2400),
 };
 
 export const NAV_LINKS = [

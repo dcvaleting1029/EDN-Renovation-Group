@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 import { GALLERY } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
 
-const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+const scrollTo = (id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  window.__lenis ? window.__lenis.scrollTo(el, { duration: 1.4 }) : el.scrollIntoView({ behavior: "smooth" });
+};
 
 export const Gallery = () => {
   return (

@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "@/data/site";
 
-const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+const scrollTo = (id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  window.__lenis ? window.__lenis.scrollTo(el, { duration: 1.4 }) : el.scrollIntoView({ behavior: "smooth" });
+};
 
 export const Showcase = () => {
   return (

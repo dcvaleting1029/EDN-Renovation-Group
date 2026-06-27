@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { TESTIMONIALS } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
+import { TiltCard } from "@/components/TiltCard";
 
 export const Testimonials = () => {
   return (
@@ -19,8 +20,8 @@ export const Testimonials = () => {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             {TESTIMONIALS.map((t, i) => (
+              <TiltCard key={i} max={6} className="h-full">
               <motion.figure
-                key={i}
                 data-testid={`testimonial-${i}`}
                 initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -41,6 +42,7 @@ export const Testimonials = () => {
                   — {t.name}
                 </figcaption>
               </motion.figure>
+              </TiltCard>
             ))}
           </div>
         </div>

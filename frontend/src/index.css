@@ -96,3 +96,29 @@ body.custom-cursor-active * {
         scroll-behavior: auto !important;
     }
 }
+
+/* ---------- Lenis smooth scroll ---------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- Cinematic film grain + vignette ---------- */
+.film-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    background-size: 170px 170px;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    animation: grainShift 0.9s steps(5) infinite;
+}
+@keyframes grainShift {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-5%, 4%); }
+    40% { transform: translate(4%, -5%); }
+    60% { transform: translate(-3%, 3%); }
+    80% { transform: translate(5%, -3%); }
+    100% { transform: translate(0, 0); }
+}
+.film-vignette {
+    box-shadow: inset 0 0 180px 30px rgba(0, 0, 0, 0.22);
+}
