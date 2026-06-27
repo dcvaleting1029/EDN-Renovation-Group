@@ -12,8 +12,8 @@ export const Showcase = () => {
     <section id="showcase" className="relative bg-white py-24 lg:py-32">
       <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
         <motion.div
-          initial={{ clipPath: "inset(14% 14% 14% 14% round 24px)", opacity: 0.4 }}
-          whileInView={{ clipPath: "inset(0% 0% 0% 0% round 24px)", opacity: 1 }}
+          initial={{ clipPath: "inset(14% 14% 14% 14% round 0px)", opacity: 0.4 }}
+          whileInView={{ clipPath: "inset(0% 0% 0% 0% round 0px)", opacity: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative h-[60vh] min-h-[420px] w-full overflow-hidden rounded-[24px]"
