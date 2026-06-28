@@ -71,7 +71,7 @@ export const GALLERY = [
 ];
 
 export const CONTACT = {
-  phone: "0131 526 0140",
-  email: "info@ednrenovationgroup.com",
+  phone: "0131 510 4760",
+  email: "chrisjackson@ednrenovationgroup.com",
   location: "Edinburgh",
 };
