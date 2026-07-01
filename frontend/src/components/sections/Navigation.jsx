@@ -41,7 +41,7 @@ export const Navigation = () => {
           className="flex flex-col items-start leading-none"
         >
           <motion.span
-            animate={{ color: scrolled ? "#B88A45" : "#111111" }}
+            animate={{ color: scrolled ? "#111111" : "#111111" }}
             transition={{ duration: 0.6 }}
             className="font-serif text-2xl font-light tracking-[0.25em]"
           >
@@ -71,7 +71,7 @@ export const Navigation = () => {
           <button
             data-testid="nav-cta-quote"
             onClick={() => scrollTo("contact")}
-            className="hidden rounded-full bg-edn-bronze px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_8px_24px_rgba(184,138,69,0.32)] transition-all duration-300 hover:bg-edn-bronzeDeep hover:scale-[1.04] sm:block"
+            className="hidden rounded-full bg-edn-ink px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_8px_24px_rgba(17,17,17,0.25)] transition-all duration-300 hover:bg-black hover:scale-[1.04] sm:block"
           >
             Get Free Quote
           </button>

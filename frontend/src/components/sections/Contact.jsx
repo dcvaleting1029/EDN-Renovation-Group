@@ -104,7 +104,7 @@ export const Contact = () => {
               type="submit"
               data-testid="enquiry-submit"
               disabled={loading}
-              className="group mt-6 flex w-full items-center justify-center gap-3 rounded-full bg-edn-bronze px-8 py-4 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_12px_34px_rgba(184,138,69,0.34)] transition-colors duration-300 hover:bg-edn-bronzeDeep disabled:opacity-60"
+              className="group mt-6 flex w-full items-center justify-center gap-3 rounded-full bg-edn-ink px-8 py-4 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_12px_34px_rgba(17,17,17,0.28)] transition-colors duration-300 hover:bg-black disabled:opacity-60"
             >
               {loading ? "Sending..." : "Send Enquiry"}
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />

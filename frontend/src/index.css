@@ -18,7 +18,7 @@
         --secondary-foreground: 0 0% 9%;
         --muted: 40 25% 94%;
         --muted-foreground: 0 0% 42%;
-        --accent: 36 46% 50%;
+        --accent: 0 0% 7%;
         --accent-foreground: 0 0% 100%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
@@ -47,7 +47,7 @@
 
 /* ---------- Selection ---------- */
 ::selection {
-    background: rgba(184, 138, 69, 0.22);
+    background: rgba(17, 17, 17, 0.14);
     color: #111111;
 }
 
@@ -55,7 +55,7 @@
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: #F5F2EC; }
 ::-webkit-scrollbar-thumb { background: #d9cfbd; border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: #B88A45; }
+::-webkit-scrollbar-thumb:hover { background: #111111; }
 
 /* ---------- Custom cursor ---------- */
 body.custom-cursor-active,
@@ -75,14 +75,14 @@ body.custom-cursor-active * {
     -webkit-backdrop-filter: blur(16px);
 }
 .text-shimmer-star {
-    background: linear-gradient(110deg, #B88A45 30%, #f0dcae 50%, #B88A45 70%);
+    background: linear-gradient(110deg, #111111 30%, #777777 50%, #111111 70%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .bronze-line-gradient {
-    background: linear-gradient(90deg, #B88A45, #e6c987, #B88A45);
+    background: linear-gradient(90deg, #111111, #555555, #111111);
     background-size: 200% 100%;
 }
 .tracking-luxe { letter-spacing: 0.18em; }

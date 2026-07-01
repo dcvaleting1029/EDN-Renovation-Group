@@ -58,7 +58,7 @@ export const Showcase = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
               data-testid="showcase-cta"
               onClick={() => scrollTo("contact")}
-              className="mt-8 rounded-full bg-edn-bronze px-8 py-4 text-[11px] font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:scale-[1.05] hover:bg-edn-bronzeDeep"
+              className="mt-8 rounded-full bg-edn-ink px-8 py-4 text-[11px] font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:scale-[1.05] hover:bg-black"
             >
               Start Your Project
             </motion.button>

@@ -13,8 +13,8 @@ module.exports = {
       },
       colors: {
         edn: {
-          bronze: '#B88A45',
-          bronzeDeep: '#9A7035',
+          bronze: '#111111',
+          bronzeDeep: '#000000',
           warm: '#F8F8F6',
           beige: '#F5F2EC',
           ink: '#111111',
@@ -80,8 +80,8 @@ module.exports = {
           '100%': { backgroundPosition: '200% 0' },
         },
         breathe: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(184,138,69,0.28)' },
-          '50%': { boxShadow: '0 0 28px 4px rgba(184,138,69,0.32)' },
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(17,17,17,0.22)' },
+          '50%': { boxShadow: '0 0 28px 4px rgba(17,17,17,0.28)' },
         },
         microFloat: {
           '0%, 100%': { transform: 'translateY(0)' },

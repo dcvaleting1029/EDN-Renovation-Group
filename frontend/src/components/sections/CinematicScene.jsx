@@ -27,7 +27,7 @@ export const CinematicScene = ({ image, eyebrow, title }) => {
 
       {/* slow light sweep — golden-hour beam */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 left-0 h-[200%] w-1/3 animate-lightSweep bg-gradient-to-r from-transparent via-amber-100/25 to-transparent blur-2xl" />
+        <div className="absolute -top-1/2 left-0 h-[200%] w-1/3 animate-lightSweep bg-gradient-to-r from-transparent via-white/25 to-transparent blur-2xl" />
       </div>
 
       <motion.div

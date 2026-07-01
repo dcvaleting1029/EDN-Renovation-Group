@@ -36,7 +36,7 @@ export default function Admin() {
             <h1 className="font-serif text-4xl font-light text-edn-ink">Enquiries</h1>
             <p className="mt-1 text-sm text-edn-muted">{items.length} total submissions</p>
           </div>
-          <button onClick={load} className="flex items-center gap-2 rounded-full bg-edn-bronze px-5 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-white hover:bg-edn-bronzeDeep" data-testid="admin-refresh">
+          <button onClick={load} className="flex items-center gap-2 rounded-full bg-edn-ink px-5 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-white hover:bg-black" data-testid="admin-refresh">
             <RefreshCw size={14} className={loading ? "animate-spin" : ""} /> Refresh
           </button>
         </div>

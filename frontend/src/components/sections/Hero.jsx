@@ -73,7 +73,7 @@ export const Hero = ({ revealed }) => {
 
       {/* Cinematic vignette + golden bloom */}
       <div className="film-vignette pointer-events-none absolute inset-0" />
-      <div className="pointer-events-none absolute -left-24 -top-10 h-[65%] w-[55%] rounded-full bg-amber-50/25 blur-[130px]" />
+      <div className="pointer-events-none absolute -left-24 -top-10 h-[65%] w-[55%] rounded-full bg-white/20 blur-[130px]" />
 
       {/* Light sweep */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -143,7 +143,7 @@ export const Hero = ({ revealed }) => {
           <button
             data-testid="hero-cta-quote"
             onClick={() => scrollTo("contact")}
-            className="group flex items-center gap-3 rounded-full bg-edn-bronze px-8 py-4 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_12px_34px_rgba(184,138,69,0.34)] transition-all duration-300 hover:scale-[1.05] hover:bg-edn-bronzeDeep animate-breathe"
+            className="group flex items-center gap-3 rounded-full bg-edn-ink px-8 py-4 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_12px_34px_rgba(17,17,17,0.28)] transition-all duration-300 hover:scale-[1.05] hover:bg-black animate-breathe"
           >
             Get Free Quote
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />

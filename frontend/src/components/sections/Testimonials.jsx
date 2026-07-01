@@ -27,7 +27,7 @@ export const Testimonials = () => {
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -10, rotate: 1, boxShadow: "0 30px 70px rgba(184,138,69,0.20)" }}
+                whileHover={{ y: -10, rotate: 1, boxShadow: "0 30px 70px rgba(17,17,17,0.14)" }}
                 className="rounded-[24px] border border-edn-divider/70 bg-white/70 p-7 backdrop-blur-md shadow-[0_10px_40px_rgba(17,17,17,0.05)] transition-shadow"
               >
                 <div className="flex gap-1">
