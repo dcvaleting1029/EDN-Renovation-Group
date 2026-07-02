@@ -98,7 +98,7 @@ module.exports = {
         heroZoom: 'heroZoom 30s ease-in-out infinite alternate',
         lightSweep: 'lightSweep 8s ease-in-out infinite',
         shimmer: 'shimmer 2.4s linear infinite',
-        breathe: 'breathe 3.4s ease-in-out infinite',
+        breathe: 'breathe 8s ease-in-out infinite',
         microFloat: 'microFloat 3s ease-in-out infinite',
         gradientShift: 'gradientShift 6s ease infinite',
       },
