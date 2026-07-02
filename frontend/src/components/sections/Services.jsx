@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Maximize2, Hammer, ChefHat, Bath, Mountain, Trees } from "lucide-react";
+import { ArrowRight, Maximize2, Hammer, ChefHat, Bath, Mountain, Flame } from "lucide-react";
 import { SERVICES } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
 
-const ICONS = { Maximize2, Hammer, ChefHat, Bath, Mountain, Trees };
+const ICONS = { Maximize2, Hammer, ChefHat, Bath, Mountain, Flame };
 
 export const Services = () => {
   return (
