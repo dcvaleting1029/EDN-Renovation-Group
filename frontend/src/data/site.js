@@ -11,7 +11,7 @@ export const IMAGES = {
   beforeImg: "/ba-before.jpg",
   afterImg: "/ba-after.jpg",
   scene1: u("1600210492486-724fe5c67fb0", 2200),
-  scene2: u("1613490493576-7fde63acd811", 2400),
+  scene2: "/sanctuary.jpg",
 };
 
 export const NAV_LINKS = [
