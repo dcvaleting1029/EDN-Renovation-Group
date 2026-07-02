@@ -3,8 +3,8 @@ const u = (id, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=80&w=${w}`;
 
 export const IMAGES = {
-  // Client-supplied modern kitchen hero
-  hero: "/hero-kitchen.png",
+  // Client-supplied modern kitchen hero (Unsplash: light wood cabinets & island)
+  hero: "/hero-kitchen-v2.jpg",
   showcase: u("1763133928914-3cb3b2e95cff", 2200),
   processBg: u("1595599014147-a419c147bdc0", 1600),
   contactBg: u("1709531766566-7e26b3ea582d", 2000),
