@@ -25,7 +25,7 @@ export const Navigation = () => {
       data-testid="main-navigation"
       initial={false}
       animate={{
-        backgroundColor: scrolled ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0)",
+        backgroundColor: scrolled || open ? "rgba(255,255,255,1)" : "rgba(255,255,255,0)",
         backdropFilter: scrolled ? "blur(20px)" : "blur(0px)",
         boxShadow: scrolled ? "0 8px 30px rgba(17,17,17,0.07)" : "0 0 0 rgba(0,0,0,0)",
         paddingTop: scrolled ? 12 : 22,
@@ -78,9 +78,9 @@ export const Navigation = () => {
           <button
             data-testid="nav-mobile-toggle"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-edn-divider bg-white/70 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center text-edn-ink lg:hidden"
           >
-            {open ? <X size={18} /> : <Menu size={18} />}
+            {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
@@ -92,9 +92,9 @@ export const Navigation = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4 }}
-            className="overflow-hidden lg:hidden"
+            className="w-full overflow-hidden lg:hidden"
           >
-            <ul className="mx-6 mt-4 space-y-1 rounded-2xl glass p-4">
+            <ul className="w-full space-y-1 border-t border-edn-divider bg-white px-6 py-4">
               {NAV_LINKS.map((l) => (
                 <li key={l.id}>
                   <button
@@ -103,7 +103,7 @@ export const Navigation = () => {
                       scrollTo(l.id);
                       setOpen(false);
                     }}
-                    className="w-full rounded-xl px-4 py-3 text-left text-xs font-medium uppercase tracking-[0.18em] text-edn-ink hover:bg-edn-beige"
+                    className="w-full px-2 py-3.5 text-left text-xs font-medium uppercase tracking-[0.18em] text-edn-ink hover:bg-edn-beige"
                   >
                     {l.label}
                   </button>
