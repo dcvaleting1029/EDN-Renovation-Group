@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/sections/Navigation";
 import { Hero } from "@/components/sections/Hero";
+import { OwnerMessage } from "@/components/sections/OwnerMessage";
 import { Services } from "@/components/sections/Services";
 import { CinematicScene } from "@/components/sections/CinematicScene";
 import { BeforeAfter } from "@/components/sections/BeforeAfter";
@@ -18,6 +19,7 @@ export default function Landing({ revealed }) {
     <main className="overflow-x-clip bg-edn-warm">
       <Navigation />
       <Hero revealed={revealed} />
+      <OwnerMessage />
       <Services />
       <CinematicScene
         image={IMAGES.scene1}
