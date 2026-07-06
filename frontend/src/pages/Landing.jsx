@@ -5,6 +5,7 @@ import { CinematicScene } from "@/components/sections/CinematicScene";
 import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { Statistics } from "@/components/sections/Statistics";
 import { Process } from "@/components/sections/Process";
+import { Pricing } from "@/components/sections/Pricing";
 import { Showcase } from "@/components/sections/Showcase";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Gallery } from "@/components/sections/Gallery";
@@ -26,6 +27,7 @@ export default function Landing({ revealed }) {
       <BeforeAfter />
       <Statistics />
       <Process />
+      <Pricing />
       <Showcase />
       <Testimonials />
       <Gallery />

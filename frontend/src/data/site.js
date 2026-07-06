@@ -75,3 +75,48 @@ export const CONTACT = {
   email: "chrisjackson@ednrenovationgroup.com",
   location: "Edinburgh",
 };
+
+export const PRICING = {
+  eyebrow: "Booking & Payment",
+  title: "Transparent booking and payment structure.",
+  subtitle:
+    "Designed to keep projects organised, dates protected and expectations clear from the start.",
+  stages: [
+    {
+      tab: "Deposit",
+      icon: "Bookmark",
+      amount: "£100",
+      heading: "Booking deposit",
+      sub: "£100 to secure your project",
+      right: "",
+      note: "Booking deposit secures your date in the diary",
+    },
+    {
+      tab: "25%",
+      icon: "CircleDollarSign",
+      amount: "25%",
+      heading: "Before work starts",
+      sub: "25% of project cost",
+      right: "Paid before work begins",
+      note: "Due four weeks prior to works starting",
+    },
+    {
+      tab: "25%",
+      icon: "CircleDollarSign",
+      amount: "25%",
+      heading: "Halfway There",
+      sub: "25% of project cost",
+      right: "Paid halfway through",
+      note: "Due at the halfway stage of the project",
+    },
+    {
+      tab: "Final",
+      icon: "CircleDollarSign",
+      amount: "50%",
+      heading: "At Full Completion",
+      sub: "50% of project cost",
+      right: "Paid at full completion",
+      note: "Final payment only on full completion",
+    },
+  ],
+};
