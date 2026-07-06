@@ -2,7 +2,7 @@ import { Reveal } from "@/components/Reveal";
 
 export const OwnerMessage = () => {
   return (
-    <section id="owner-message" className="relative overflow-hidden bg-edn-warm py-24 lg:py-32">
+    <section id="owner-message" className="relative overflow-hidden bg-edn-warm pt-36 pb-24 lg:py-32">
       <div className="mx-auto max-w-[1000px] px-6 lg:px-12">
         <Reveal as="p" className="text-[11px] font-semibold uppercase tracking-[0.32em] text-edn-bronze">
           From The Founder
