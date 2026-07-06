@@ -10,7 +10,7 @@ export const IMAGES = {
   contactBg: u("1709531766566-7e26b3ea582d", 2000),
   beforeImg: "/ba-before.jpg",
   afterImg: "/ba-after.jpg",
-  scene1: u("1600210492486-724fe5c67fb0", 2200),
+  scene1: u("1658370230118-24aa79649d6c", 2200),
   scene2: "/sanctuary.jpg",
 };
 

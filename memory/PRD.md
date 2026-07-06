@@ -36,3 +36,4 @@ Build a pixel-perfect, award-winning luxury renovation company landing page for 
 - Replaced 2 duplicate images in Projects gallery (GALLERY in site.js): "Bruntsfield Sash & Glazing" now uses white-framed glazing image (1631048498692-af6262577031); "Grange Villa Renovation" now uses brown brick house exterior (1621983209348-7b5a63f23866). Verified visually — all 8 gallery images now unique.
 - PENDING: Contact form email notifications via Resend (needs user API key). Enquiries currently DB-only, viewable at /admin.
 - Added cinematic full-screen lightbox to Projects gallery: click any tile or "View All Projects" to open a full-size viewer with prev/next, keyboard nav (Esc/arrows), image counter, and body-scroll lock. z-[9995] to sit above nav.
+- Replaced scene1 (full-screen CinematicScene below Services) image with new bathroom photo (1658370230118-24aa79649d6c).
