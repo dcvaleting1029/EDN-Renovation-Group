@@ -27,7 +27,6 @@ export default function Landing({ revealed }) {
       <BeforeAfter />
       <Statistics />
       <Process />
-      <Pricing />
       <Showcase />
       <Testimonials />
       <Gallery />
@@ -36,6 +35,7 @@ export default function Landing({ revealed }) {
         eyebrow="The Sanctuary"
         title="Where craftsmanship becomes calm."
       />
+      <Pricing />
       <Contact />
       <Footer />
     </main>
