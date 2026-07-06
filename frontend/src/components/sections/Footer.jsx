@@ -58,9 +58,23 @@ export const Footer = () => {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-[10px] tracking-[0.12em] text-edn-muted/70 lg:text-left">
-          © {new Date().getFullYear()} EDN Renovation Group. All rights reserved.
-        </p>
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 sm:flex-row">
+          <p className="text-[10px] tracking-[0.12em] text-edn-muted/70">
+            © {new Date().getFullYear()} EDN Renovation Group. All rights reserved.
+          </p>
+          <p className="text-[10px] tracking-[0.12em] text-edn-muted/70">
+            Designed by{" "}
+            <a
+              href="https://jayalminshawi.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-edn-bronze"
+              data-testid="footer-designer-link"
+            >
+              Jay Alminshawi
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
