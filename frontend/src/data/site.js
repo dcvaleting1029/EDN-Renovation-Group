@@ -60,14 +60,14 @@ export const TESTIMONIALS = [
 ];
 
 export const GALLERY = [
-  { title: "New Town Kitchen", img: u("1556912172-45b7abe8b7e1", 1100), tall: true },
-  { title: "Stockbridge Bathroom", img: u("1600566753151-384129cf4e3e", 1100), tall: false },
-  { title: "Dean Village Townhouse", img: u("1610991136128-838ca3c5497b", 1100), tall: false },
-  { title: "Morningside Loft", img: u("1616594039964-ae9021a400a0", 1100), tall: true },
-  { title: "New Town Drawing Room", img: u("1600210492486-724fe5c67fb0", 1100), tall: false },
-  { title: "Royal Mile Apartment", img: u("1709531766566-7e26b3ea582d", 1100), tall: false },
-  { title: "Bruntsfield Penthouse", img: u("1600566753190-17f0baa2a6c3", 1100), tall: true },
-  { title: "Grange Villa", img: u("1595599014147-a419c147bdc0", 1100), tall: false },
+  { title: "New Town Kitchen", img: u("1714860534425-7ce04e013dec", 1100), tall: true },
+  { title: "Stockbridge Bathroom", img: u("1661107259637-4e1c55462428", 1100), tall: false },
+  { title: "Dean Village Townhouse", img: u("1632143697739-5559b57ac985", 1100), tall: false },
+  { title: "Morningside Loft", img: u("1621362660850-a2554b580b41", 1100), tall: true },
+  { title: "New Town Extension", img: u("1740759680046-c7071fb6173a", 1100), tall: false },
+  { title: "Royal Mile Heating & Rewire", img: u("1669725341213-7379ff6c90d5", 1100), tall: false },
+  { title: "Bruntsfield Kitchen", img: u("1714860534425-7ce04e013dec", 1100), tall: true },
+  { title: "Grange Villa Renovation", img: u("1632143697739-5559b57ac985", 1100), tall: false },
 ];
 
 export const CONTACT = {
