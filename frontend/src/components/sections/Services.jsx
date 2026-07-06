@@ -41,7 +41,7 @@ export const Services = () => {
                   className="h-full w-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.12]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60" />
-                <span className="absolute -bottom-6 left-8 flex h-12 w-12 items-center justify-center rounded-full border border-edn-bronze/40 bg-white text-edn-bronze shadow-md">
+                <span className="absolute bottom-6 left-8 flex h-12 w-12 items-center justify-center rounded-full border border-edn-bronze/40 bg-white text-edn-bronze shadow-md">
                   <Icon size={20} strokeWidth={1.5} />
                 </span>
               </div>
