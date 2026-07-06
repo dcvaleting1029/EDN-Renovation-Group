@@ -31,3 +31,7 @@ Build a pixel-perfect, award-winning luxury renovation company landing page for 
 
 ## Next Tasks
 - Await user feedback / real assets, then refine imagery and copy.
+
+## Update (2026-06)
+- Replaced 2 duplicate images in Projects gallery (GALLERY in site.js): "Bruntsfield Sash & Glazing" now uses white-framed glazing image (1631048498692-af6262577031); "Grange Villa Renovation" now uses brown brick house exterior (1621983209348-7b5a63f23866). Verified visually — all 8 gallery images now unique.
+- PENDING: Contact form email notifications via Resend (needs user API key). Enquiries currently DB-only, viewable at /admin.
