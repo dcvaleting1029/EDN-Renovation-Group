@@ -32,7 +32,7 @@ export const TRUST = [
 
 export const SERVICES = [
   { title: "Extensions", icon: "Maximize2", img: u("1740759680046-c7071fb6173a", 1200), desc: "Sympathetic extensions to Edinburgh period homes that expand your living space." },
-  { title: "Full Renovations", icon: "Hammer", img: u("1600210492486-724fe5c67fb0", 1200), desc: "Complete home transformations from concept to flawless completion." },
+  { title: "Full Renovations", icon: "Hammer", img: u("1632143697739-5559b57ac985", 1200), desc: "Complete home transformations from concept to flawless completion." },
   { title: "Kitchens", icon: "ChefHat", img: u("1556911220-bff31c812dba", 1200), desc: "Bespoke luxury kitchens crafted around how you live and entertain." },
   { title: "Bathrooms", icon: "Bath", img: u("1507652313519-d4e9174996dd", 1200), desc: "Spa-grade bathrooms with premium finishes and faultless detail." },
   { title: "Loft Conversions", icon: "Mountain", img: u("1621362660850-a2554b580b41", 1200), desc: "Light-filled loft spaces that unlock the full potential of your home." },
