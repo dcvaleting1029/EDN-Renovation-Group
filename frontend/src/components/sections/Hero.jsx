@@ -55,7 +55,7 @@ export const Hero = ({ revealed }) => {
       id="home"
       ref={heroRef}
       onMouseMove={onMouseMove}
-      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-edn-ink"
+      className="relative min-h-[100svh] w-full overflow-hidden bg-edn-ink"
     >
       {/* Background w/ parallax + brightness + mouse camera */}
       <motion.div className="absolute -inset-[10%]" style={{ y: bgY, filter }}>
@@ -102,7 +102,7 @@ export const Hero = ({ revealed }) => {
       {/* Content */}
       <motion.div
         style={{ y: textY }}
-        className="relative z-10 mx-auto flex h-full max-w-[1480px] flex-col items-center justify-center px-6 pt-44 pb-16 text-center lg:px-12 lg:pt-24 lg:pb-0"
+        className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1480px] flex-col items-center justify-center px-6 pt-28 pb-14 text-center lg:px-12 lg:pt-24 lg:pb-0"
       >
         <motion.span
           variants={reveal(0)}
@@ -128,7 +128,7 @@ export const Hero = ({ revealed }) => {
           variants={reveal(0.25)}
           initial="hidden"
           animate={animState}
-          className="mt-5 max-w-[15ch] font-serif text-[12vw] font-light leading-[0.98] tracking-tight text-edn-ink sm:text-6xl lg:text-[5rem]"
+          className="mt-5 max-w-[15ch] font-serif text-[2.35rem] font-light leading-[1.03] tracking-tight text-edn-ink sm:text-6xl sm:leading-[0.98] lg:text-[5rem]"
           data-testid="hero-heading"
         >
           Edinburgh Home Renovations — Done Properly.
@@ -138,7 +138,7 @@ export const Hero = ({ revealed }) => {
           variants={reveal(0.45)}
           initial="hidden"
           animate={animState}
-          className="mx-auto mt-8 max-w-[460px] text-base leading-loose text-edn-muted sm:text-lg"
+          className="mx-auto mt-6 max-w-[460px] text-base leading-relaxed text-edn-muted sm:mt-8 sm:text-lg sm:leading-loose"
         >
           Kitchens, structural alterations and full internal renovations.
           Designed, managed and delivered under one roof.
@@ -148,7 +148,7 @@ export const Hero = ({ revealed }) => {
           variants={reveal(0.65)}
           initial="hidden"
           animate={animState}
-          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+          className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:mt-12"
         >
           <button
             data-testid="hero-cta-quote"
@@ -167,7 +167,7 @@ export const Hero = ({ revealed }) => {
           </button>
         </motion.div>
 
-        <motion.div variants={reveal(0.9)} initial="hidden" animate={animState} className="mx-auto mt-16 w-full max-w-3xl">
+        <motion.div variants={reveal(0.9)} initial="hidden" animate={animState} className="mx-auto mt-10 w-full max-w-3xl sm:mt-16">
           <TrustBar />
         </motion.div>
       </motion.div>

@@ -1,0 +1,24 @@
+{
+  "summary": "Frontend-only mobile Hero regression testing after the mobile responsive fix (min-h-[100svh], pt-28 pb-14 lg:pt-24 lg:pb-0, mobile H1 text-[2.35rem]). Verified at 3 mobile viewports (360x640, 375x667, 390x844), mobile nav, mobile smoke of all sections, and desktop 1920x800 regression. All acceptance criteria met.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Hero.jsx has a duplicated min-h-[100svh] on both the <section> and the inner content <motion.div>. On short screens (<= 640/667px viewport) this pushes the trust-bar off the visible fold (section grows to ~861px). Trust-bar is still reachable by scrolling but is not visible without any scroll on 360x640 / 375x667. If the intent is for the trust bar to be visible in the initial viewport on short phones, consider removing the min-h from the inner content wrapper and letting it collapse to its natural height (or reducing paddings further). Current behavior is acceptable and not a bug.",
+    "Console warning present on every page load: 'Please ensure that the container has a non-static position, like relative/fixed/absolute to ensure scroll offset is calculated correctly.' — likely from framer-motion useScroll on the hero background parallax. Non-blocking, but worth silencing by adding position: relative to the scroll target.",
+    "Carry-over from iteration_1/2 (still valid): /admin is public with PII; EnquiryCreate lacks max_length; POST /api/enquiries lacks rate-limit."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (not tested this iteration)", "frontend": "100%"},
+  "test_credentials": "N/A — public landing page.",
+  "seed_data_creation": "None.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Mobile Hero bug fix verified. Measured box positions at 375x667 mobile: nav bottom=86, hero-budget-banner y=112 (gap=26px, safe), hero-eyebrow y=180, hero-heading y=233 (h=116), hero-cta-quote y=483, hero-cta-projects y=547, trust-bar y=638 (in-scroll, but section height 861 accommodates it via min-h growth). At 390x844 all elements including trust-bar fit in the initial viewport. Desktop 1920x800: section#home height=815, trust-bar y=723 (fits in 800px viewport). No horizontal overflow on any tested viewport. Mobile nav (data-testid=nav-mobile-toggle) opens full-width white drawer with Home/Services/Projects/About Us/Process/Reviews. Note: About Us testid remains 'nav-showcase' (from prior iteration). #pricing section exists on the page (top=11670, height=902 at 375px).",
+  "rca of the issue": "N/A — bug fix already applied by E1 and verified working. Original RCA (from problem statement): pt-44 + 12vw H1 made hero content taller than viewport, then overflow-hidden + fixed h-[100svh] caused the £10k-£100k banner to overlap the fixed navbar. Fix: min-h-[100svh] (allow grow), pt-28 pb-14 on mobile, H1 text-[2.35rem] mobile."
+}
