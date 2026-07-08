@@ -4,6 +4,8 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import asyncio
+import resend
 from pathlib import Path
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from typing import List, Optional
@@ -24,6 +26,45 @@ app = FastAPI()
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
+
+# Resend email config
+resend.api_key = os.environ.get('RESEND_API_KEY')
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
+ENQUIRY_RECIPIENT = os.environ.get('ENQUIRY_RECIPIENT')
+
+
+def _build_enquiry_email(enquiry: "Enquiry") -> str:
+    return f"""
+    <div style="font-family: Arial, Helvetica, sans-serif; color: #111111; max-width: 560px; margin: 0 auto;">
+      <h2 style="font-weight: 600; margin-bottom: 4px;">New Website Enquiry</h2>
+      <p style="color: #6B6B6B; margin-top: 0;">EDN Renovation Group</p>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+        <tr><td style="padding: 10px 0; color: #6B6B6B; width: 130px;">Name</td><td style="padding: 10px 0; font-weight: 600;">{enquiry.name}</td></tr>
+        <tr><td style="padding: 10px 0; color: #6B6B6B;">Email</td><td style="padding: 10px 0;">{enquiry.email}</td></tr>
+        <tr><td style="padding: 10px 0; color: #6B6B6B;">Phone</td><td style="padding: 10px 0;">{enquiry.phone or '—'}</td></tr>
+        <tr><td style="padding: 10px 0; color: #6B6B6B; vertical-align: top;">Message</td><td style="padding: 10px 0;">{enquiry.message or '—'}</td></tr>
+      </table>
+      <p style="color: #6B6B6B; font-size: 12px; margin-top: 24px;">Received {enquiry.created_at.strftime('%d %b %Y, %H:%M UTC')}</p>
+    </div>
+    """
+
+
+async def send_enquiry_email(enquiry: "Enquiry"):
+    if not resend.api_key or not SENDER_EMAIL or not ENQUIRY_RECIPIENT:
+        logger.warning("Resend not configured; skipping enquiry email.")
+        return
+    params = {
+        "from": SENDER_EMAIL,
+        "to": [ENQUIRY_RECIPIENT],
+        "reply_to": enquiry.email,
+        "subject": f"New Enquiry — {enquiry.name}",
+        "html": _build_enquiry_email(enquiry),
+    }
+    try:
+        result = await asyncio.to_thread(resend.Emails.send, params)
+        logger.info(f"Enquiry email sent: {result.get('id')}")
+    except Exception as e:
+        logger.error(f"Failed to send enquiry email: {e}")
 
 
 # ---------- Models ----------
@@ -87,6 +128,7 @@ async def create_enquiry(input: EnquiryCreate):
     doc = enquiry.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.enquiries.insert_one(doc)
+    await send_enquiry_email(enquiry)
     return enquiry
 
 
