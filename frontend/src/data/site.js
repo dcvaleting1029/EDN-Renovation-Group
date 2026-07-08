@@ -32,7 +32,7 @@ export const TRUST = [
 
 export const SERVICES = [
   { title: "Extensions", icon: "Maximize2", img: u("1740759680046-c7071fb6173a", 1200), desc: "Sympathetic extensions to Edinburgh period homes that expand your living space." },
-  { title: "Full Renovations", icon: "Hammer", img: u("1632143697739-5559b57ac985", 1200), desc: "Complete home transformations from concept to flawless completion." },
+  { title: "Full Refurbishments", icon: "Hammer", img: u("1692890658980-1c531c8f682d", 1200), desc: "Complete home transformations from concept to flawless completion." },
   { title: "Kitchens", icon: "ChefHat", img: u("1714860534425-7ce04e013dec", 1200), desc: "Bespoke luxury kitchens crafted around how you live and entertain." },
   { title: "Bathrooms", icon: "Bath", img: u("1661107259637-4e1c55462428", 1200), desc: "Spa-grade bathrooms with premium finishes and faultless detail." },
   { title: "Rewiring", icon: "Zap", img: "https://images.pexels.com/photos/5691493/pexels-photo-5691493.jpeg?auto=compress&cs=tinysrgb&w=1200", desc: "Complete electrical rewires carried out safely, cleanly and fully to current standards." },
