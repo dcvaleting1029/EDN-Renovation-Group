@@ -37,3 +37,9 @@ Build a pixel-perfect, award-winning luxury renovation company landing page for 
 - PENDING: Contact form email notifications via Resend (needs user API key). Enquiries currently DB-only, viewable at /admin.
 - Added cinematic full-screen lightbox to Projects gallery: click any tile or "View All Projects" to open a full-size viewer with prev/next, keyboard nav (Esc/arrows), image counter, and body-scroll lock. z-[9995] to sit above nav.
 - Replaced scene1 (full-screen CinematicScene below Services) image with new bathroom photo (1658370230118-24aa79649d6c).
+- Added "A message from the owner" (OwnerMessage) section between Hero and Services; moved Pricing to just above Contact.
+- Resend email notifications on new enquiry (POST /api/enquiries) — currently delivering to verified chris@ednrenovationgroup.com (test mode; domain verification pending for chrisjackson@).
+- Contact form: added Estimated Budget dropdown (£10k–£100k in tens), Postcode field restricted to EH (frontend toast + backend 400), budget/postcode added to Enquiry model, email template, and /admin view. Added £10k–£100k banner to Hero and Contact.
+- Replaced Sanctuary (scene2) image with white-cabinet kitchen (1665507279750-ced2d97a9be9).
+- Removed "Made with Emergent" badge (static element deleted + MutationObserver in index.html to strip re-injection).
+- Fixed mobile Hero layout bug (banner overlapping navbar + clipped trust bar): section min-h-[100svh], reduced mobile paddings, H1 text-[2.35rem] on mobile. Verified 100% via testing agent (iteration_3).
