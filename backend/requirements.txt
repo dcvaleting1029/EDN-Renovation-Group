@@ -1,8 +1,8 @@
-fastapi==0.110.1
+fastapi==0.115.0
 uvicorn==0.25.0
 python-dotenv==1.0.1
 python-multipart==0.0.9
-pydantic==2.11.7
+pydantic==2.8.2
 pymongo==4.5.0
 requests==2.34.2
 resend==2.12.0
