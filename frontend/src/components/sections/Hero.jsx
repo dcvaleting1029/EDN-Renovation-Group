@@ -108,6 +108,16 @@ export const Hero = ({ revealed }) => {
           variants={reveal(0)}
           initial="hidden"
           animate={animState}
+          className="mb-5 inline-block rounded-full border border-edn-ink/15 bg-white/50 px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-edn-ink backdrop-blur-sm"
+          data-testid="hero-budget-banner"
+        >
+          We undertake renovations from £10,000 to £100,000
+        </motion.span>
+
+        <motion.span
+          variants={reveal(0)}
+          initial="hidden"
+          animate={animState}
           className="text-[11px] font-semibold uppercase tracking-[0.5em] text-edn-bronze"
           data-testid="hero-eyebrow"
         >

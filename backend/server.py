@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -42,6 +42,8 @@ def _build_enquiry_email(enquiry: "Enquiry") -> str:
         <tr><td style="padding: 10px 0; color: #6B6B6B; width: 130px;">Name</td><td style="padding: 10px 0; font-weight: 600;">{enquiry.name}</td></tr>
         <tr><td style="padding: 10px 0; color: #6B6B6B;">Email</td><td style="padding: 10px 0;">{enquiry.email}</td></tr>
         <tr><td style="padding: 10px 0; color: #6B6B6B;">Phone</td><td style="padding: 10px 0;">{enquiry.phone or '—'}</td></tr>
+        <tr><td style="padding: 10px 0; color: #6B6B6B;">Budget</td><td style="padding: 10px 0;">{enquiry.budget or '—'}</td></tr>
+        <tr><td style="padding: 10px 0; color: #6B6B6B;">Postcode</td><td style="padding: 10px 0;">{enquiry.postcode or '—'}</td></tr>
         <tr><td style="padding: 10px 0; color: #6B6B6B; vertical-align: top;">Message</td><td style="padding: 10px 0;">{enquiry.message or '—'}</td></tr>
       </table>
       <p style="color: #6B6B6B; font-size: 12px; margin-top: 24px;">Received {enquiry.created_at.strftime('%d %b %Y, %H:%M UTC')}</p>
@@ -87,6 +89,8 @@ class Enquiry(BaseModel):
     name: str
     email: EmailStr
     phone: Optional[str] = ""
+    budget: Optional[str] = ""
+    postcode: Optional[str] = ""
     message: Optional[str] = ""
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -95,6 +99,8 @@ class EnquiryCreate(BaseModel):
     name: str
     email: EmailStr
     phone: Optional[str] = ""
+    budget: Optional[str] = ""
+    postcode: Optional[str] = ""
     message: Optional[str] = ""
 
 
@@ -124,6 +130,8 @@ async def get_status_checks():
 
 @api_router.post("/enquiries", response_model=Enquiry)
 async def create_enquiry(input: EnquiryCreate):
+    if input.postcode and not input.postcode.strip().upper().startswith("EH"):
+        raise HTTPException(status_code=400, detail="We currently only cover Edinburgh (EH) postcodes.")
     enquiry = Enquiry(**input.model_dump())
     doc = enquiry.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()

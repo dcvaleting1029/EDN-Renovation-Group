@@ -59,6 +59,8 @@ export default function Admin() {
                 <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-edn-bronze">
                   <a href={`mailto:${e.email}`} className="hover:underline">{e.email}</a>
                   {e.phone && <span className="text-edn-muted">{e.phone}</span>}
+                  {e.budget && <span className="text-edn-muted">Budget: {e.budget}</span>}
+                  {e.postcode && <span className="text-edn-muted">{e.postcode}</span>}
                 </div>
                 {e.message && <p className="mt-3 text-sm leading-relaxed text-edn-ink/80">{e.message}</p>}
               </div>

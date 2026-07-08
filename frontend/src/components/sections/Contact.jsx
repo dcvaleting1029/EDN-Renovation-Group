@@ -1,13 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
 import { IMAGES, CONTACT } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
 import { MagneticButton } from "@/components/MagneticButton";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+
+const BUDGET_OPTIONS = [
+  "£10,000", "£20,000", "£30,000", "£40,000", "£50,000",
+  "£60,000", "£70,000", "£80,000", "£90,000", "£100,000",
+];
 
 const Field = ({ label, testid, textarea, ...props }) => {
   const [focus, setFocus] = useState(false);
@@ -33,10 +38,12 @@ const Field = ({ label, testid, textarea, ...props }) => {
 };
 
 export const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", postcode: "", message: "" });
   const [loading, setLoading] = useState(false);
 
   const onChange = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+  const onPostcodeChange = (e) =>
+    setForm((f) => ({ ...f, postcode: e.target.value.toUpperCase() }));
 
   const submit = async (e) => {
     e.preventDefault();
@@ -44,13 +51,26 @@ export const Contact = () => {
       toast.error("Please add your name and email.");
       return;
     }
+    if (!form.budget) {
+      toast.error("Please select your estimated budget.");
+      return;
+    }
+    if (!form.postcode.trim()) {
+      toast.error("Please add your postcode.");
+      return;
+    }
+    if (!form.postcode.trim().toUpperCase().startsWith("EH")) {
+      toast.error("We currently only cover Edinburgh (EH) postcodes.");
+      return;
+    }
     setLoading(true);
     try {
       await axios.post(`${API}/enquiries`, form);
       toast.success("Enquiry sent — we'll be in touch shortly.");
-      setForm({ name: "", email: "", phone: "", message: "" });
+      setForm({ name: "", email: "", phone: "", budget: "", postcode: "", message: "" });
     } catch (err) {
-      toast.error("Something went wrong. Please try again.");
+      const msg = err?.response?.data?.detail || "Something went wrong. Please try again.";
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
@@ -76,6 +96,12 @@ export const Contact = () => {
             Let's bring your vision to life with expert craftsmanship and
             exceptional service. Get a free, no-obligation quote today.
           </p>
+          <div
+            data-testid="contact-budget-banner"
+            className="mt-6 inline-block rounded-full border border-edn-ink/15 bg-white/60 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-edn-ink"
+          >
+            We undertake renovations from £10,000 to £100,000
+          </div>
           <div className="mt-9 space-y-2 text-sm text-edn-ink/80">
             <div><span className="text-edn-bronze">Call</span> · {CONTACT.phone}</div>
             <div><span className="text-edn-bronze">Email</span> · {CONTACT.email}</div>
@@ -96,6 +122,29 @@ export const Contact = () => {
             </div>
             <div className="mt-4">
               <Field label="Phone Number" testid="field-phone" value={form.phone} onChange={onChange("phone")} />
+            </div>
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="relative">
+                <select
+                  data-testid="field-budget"
+                  value={form.budget}
+                  onChange={onChange("budget")}
+                  className={`w-full appearance-none rounded-2xl border border-edn-divider bg-white/80 px-5 py-4 text-sm outline-none transition-all duration-300 focus:border-edn-bronze ${form.budget ? "text-edn-ink" : "text-edn-muted/70"}`}
+                >
+                  <option value="" disabled>Estimated Budget</option>
+                  {BUDGET_OPTIONS.map((b) => (
+                    <option key={b} value={b} className="text-edn-ink">{b}</option>
+                  ))}
+                </select>
+                <ChevronDown size={16} className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-edn-muted" />
+              </div>
+              <Field
+                label="Postcode (EH…)"
+                testid="field-postcode"
+                value={form.postcode}
+                onChange={onPostcodeChange}
+                maxLength={8}
+              />
             </div>
             <div className="mt-4">
               <Field label="Tell us about your project..." testid="field-message" textarea value={form.message} onChange={onChange("message")} />
