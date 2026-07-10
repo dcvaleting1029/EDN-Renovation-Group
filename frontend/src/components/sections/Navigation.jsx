@@ -21,6 +21,15 @@ export const Navigation = () => {
   }, []);
 
   return (
+    <>
+    <div
+      data-testid="mobile-promo-banner"
+      className="fixed inset-x-0 top-0 z-[9992] flex h-9 items-center justify-center bg-edn-ink px-3 text-center lg:hidden"
+    >
+      <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-white">
+        We undertake renovations from £10,000 to £100,000
+      </span>
+    </div>
     <motion.header
       data-testid="main-navigation"
       initial={false}
@@ -32,7 +41,7 @@ export const Navigation = () => {
         paddingBottom: scrolled ? 12 : 22,
       }}
       transition={{ type: "spring", stiffness: 140, damping: 20, mass: 0.7 }}
-      className="fixed inset-x-0 top-0 z-[9990]"
+      className="fixed inset-x-0 top-9 z-[9990] lg:top-0"
     >
       <nav className="mx-auto flex max-w-[1480px] items-center justify-between px-6 lg:px-12">
         <button
@@ -114,5 +123,6 @@ export const Navigation = () => {
         )}
       </AnimatePresence>
     </motion.header>
+    </>
   );
 };

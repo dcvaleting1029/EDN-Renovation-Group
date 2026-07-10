@@ -102,13 +102,13 @@ export const Hero = ({ revealed }) => {
       {/* Content */}
       <motion.div
         style={{ y: textY }}
-        className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1480px] flex-col items-center justify-center px-6 pt-28 pb-14 text-center lg:px-12 lg:pt-24 lg:pb-0"
+        className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1480px] flex-col items-center justify-center px-6 pt-32 pb-14 text-center lg:px-12 lg:pt-24 lg:pb-0"
       >
         <motion.span
           variants={reveal(0)}
           initial="hidden"
           animate={animState}
-          className="mb-5 inline-block rounded-full border border-edn-ink/15 bg-white/50 px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-edn-ink backdrop-blur-sm"
+          className="mb-5 hidden rounded-full border border-edn-ink/15 bg-white/50 px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-edn-ink backdrop-blur-sm lg:inline-block"
           data-testid="hero-budget-banner"
         >
           We undertake renovations from £10,000 to £100,000
