@@ -121,7 +121,7 @@ export const Hero = ({ revealed }) => {
           className="text-[11px] font-semibold uppercase tracking-[0.5em] text-edn-bronze"
           data-testid="hero-eyebrow"
         >
-          Luxury Renovation Specialists
+          Renovation Specialists
         </motion.span>
 
         <motion.h1
