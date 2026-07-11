@@ -31,7 +31,7 @@ export const TRUST = [
 ];
 
 export const SERVICES = [
-  { title: "Structural Alterations", icon: "Maximize2", img: u("1649083048770-82e8ffd80431", 1200), desc: "Wall removals and steel beam installations to open up and reconfigure your living space." },
+  { title: "Structural Alterations", icon: "Maximize2", img: u("1760545813135-fbda9423e448", 1200), desc: "Wall removals and steel beam installations to open up and reconfigure your living space." },
   { title: "Full Refurbishments", icon: "Hammer", img: u("1692890658980-1c531c8f682d", 1200), desc: "Complete home transformations from concept to flawless completion." },
   { title: "Kitchens", icon: "ChefHat", img: u("1714860534425-7ce04e013dec", 1200), desc: "Bespoke luxury kitchens crafted around how you live and entertain." },
   { title: "Bathrooms", icon: "Bath", img: u("1661107259637-4e1c55462428", 1200), desc: "Spa-grade bathrooms with premium finishes and faultless detail." },
