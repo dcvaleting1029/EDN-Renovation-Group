@@ -1,0 +1,45 @@
+services:
+  # ---------- Backend: FastAPI (Python web service) ----------
+  - type: web
+    name: edn-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.15
+      # Fill these in the Render dashboard (marked sync:false = not stored in git)
+      - key: MONGO_URL          # MongoDB Atlas connection string (mongodb+srv://...)
+        sync: false
+      - key: DB_NAME            # e.g. edn_production
+        sync: false
+      - key: CORS_ORIGINS       # your frontend URL, e.g. https://edn-frontend.onrender.com
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: SENDER_EMAIL       # e.g. onboarding@resend.dev or a verified-domain sender
+        sync: false
+      - key: ENQUIRY_RECIPIENT  # where enquiry emails are sent
+        sync: false
+
+  # ---------- Frontend: React (static site) ----------
+  - type: web
+    name: edn-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: yarn install --frozen-lockfile && yarn build
+    staticPublishPath: build
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      # Set this to your deployed backend URL, e.g. https://edn-backend.onrender.com
+      - key: REACT_APP_BACKEND_URL
+        sync: false
+    routes:
+      # SPA fallback so client-side routes like /admin work on refresh
+      - type: rewrite
+        source: /*
+        destination: /index.html
