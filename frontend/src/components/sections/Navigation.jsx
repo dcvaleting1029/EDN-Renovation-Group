@@ -27,7 +27,7 @@ export const Navigation = () => {
       className="fixed inset-x-0 top-0 z-[9992] flex h-9 items-center justify-center bg-edn-ink px-3 text-center lg:hidden"
     >
       <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-white">
-        We undertake renovations from £10,000 to £100,000
+        We undertake renovations from £10,000 to £60,000
       </span>
     </div>
     <motion.header

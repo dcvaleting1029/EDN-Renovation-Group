@@ -111,7 +111,7 @@ export const Hero = ({ revealed }) => {
           className="mb-5 hidden rounded-full border border-edn-ink/15 bg-white/50 px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-edn-ink backdrop-blur-sm lg:inline-block"
           data-testid="hero-budget-banner"
         >
-          We undertake renovations from £10,000 to £100,000
+          We undertake renovations from £10,000 to £60,000
         </motion.span>
 
         <motion.span

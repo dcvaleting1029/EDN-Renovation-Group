@@ -10,8 +10,7 @@ import { MagneticButton } from "@/components/MagneticButton";
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const BUDGET_OPTIONS = [
-  "£10,000", "£20,000", "£30,000", "£40,000", "£50,000",
-  "£60,000", "£70,000", "£80,000", "£90,000", "£100,000",
+  "£10,000", "£20,000", "£30,000", "£40,000", "£50,000", "£60,000",
 ];
 
 const Field = ({ label, testid, textarea, ...props }) => {
@@ -100,7 +99,7 @@ export const Contact = () => {
             data-testid="contact-budget-banner"
             className="mt-6 inline-block rounded-full border border-edn-ink/15 bg-white/60 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-edn-ink"
           >
-            We undertake renovations from £10,000 to £100,000
+            We undertake renovations from £10,000 to £60,000
           </div>
           <div className="mt-9 space-y-2 text-sm text-edn-ink/80">
             <div><span className="text-edn-bronze">Call</span> · {CONTACT.phone}</div>
