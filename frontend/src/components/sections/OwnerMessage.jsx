@@ -16,14 +16,21 @@ export const OwnerMessage = () => {
             <figcaption className="text-center font-serif text-2xl text-edn-ink">
               Chris <span className="text-edn-muted">— Owner</span>
             </figcaption>
-            <blockquote className="mx-auto mt-6 max-w-[68ch] text-center text-base leading-[1.9] text-edn-muted sm:text-lg">
-              “My mission is simple: to deliver a high-end finish through a well-managed,
-              professionally run project. What sets us apart is focus. We run a maximum of two
-              projects at any one time. That allows me to stay in control, avoid overstretching,
-              and remove the friction and drop in standards that often comes with it. We're not
-              chasing volume. We're selective about the work we take on—projects that align with
-              our standards and our way of working. Every job is delivered the same way:
-              controlled, streamlined, and stress-free.”
+            <blockquote className="mx-auto mt-6 max-w-[68ch] space-y-5 text-center text-base leading-[1.9] text-edn-muted sm:text-lg">
+              <p>
+                “My mission is simple: to deliver renovation projects properly, through clear
+                planning, good communication and a professionally managed process.
+              </p>
+              <p>
+                What sets us apart is focus. We run a maximum of two projects at any one time.
+                That allows me to stay involved, keep control of the programme and make sure
+                standards don’t slip.
+              </p>
+              <p>
+                Whether it’s a kitchen renovation, structural alteration or a wider refurbishment,
+                every project is approached the same way — carefully planned, professionally
+                delivered and clearly communicated from start to finish.”
+              </p>
             </blockquote>
           </figure>
         </Reveal>
