@@ -10,7 +10,7 @@ import { MagneticButton } from "@/components/MagneticButton";
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const BUDGET_OPTIONS = [
-  "£10,000", "£20,000", "£30,000", "£40,000", "£50,000", "£60,000", "Bigger budget",
+  "£10,000", "£20,000", "£30,000", "£40,000", "£50,000", "£60,000", "Bigger budget...",
 ];
 
 const Field = ({ label, testid, textarea, ...props }) => {
