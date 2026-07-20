@@ -92,8 +92,9 @@ export const Contact = () => {
             Let's Bring Your Vision To Life
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-edn-muted">
-            Let's bring your vision to life with expert craftsmanship and
-            exceptional service. Get a free, no-obligation quote today.
+            We typically deliver projects between £10,000 and £60,000, while selectively taking on
+            larger renovations where the scope aligns with our expertise. Request your free,
+            no-obligation quote today.
           </p>
           <div
             data-testid="contact-budget-banner"
