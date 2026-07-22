@@ -64,7 +64,7 @@ export const Contact = () => {
     }
     setLoading(true);
     try {
-      await axios.post(`${API}/enquiries`, form);
+      await axios.post(`${API}/api/enquiries`, form);
       toast.success("Enquiry sent — we'll be in touch shortly.");
       setForm({ name: "", email: "", phone: "", budget: "", postcode: "", message: "" });
     } catch (err) {
