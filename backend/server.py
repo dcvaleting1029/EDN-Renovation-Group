@@ -1,6 +1,6 @@
 from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
@@ -152,10 +152,15 @@ async def get_enquiries():
 # Include the router in the main app
 app.include_router(api_router)
 
+allowed_origins = [
+    "https://ednrenovationgroup.com",
+    "https://www.ednrenovationgroup.com",
+]
+
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=allowed_origins,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
     allow_methods=["*"],
     allow_headers=["*"],
 )
