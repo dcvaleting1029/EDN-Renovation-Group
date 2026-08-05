@@ -63,10 +63,12 @@ export const GALLERY = [
   { title: "Rear Extension", img: "/project-rear-extension.webp", tall: true },
   { title: "New Town Kitchen", img: u("1714860534425-7ce04e013dec", 1100), tall: true },
   { title: "Stockbridge Bathroom", img: u("1661107259637-4e1c55462428", 1100), tall: false },
+  { title: "Underfloor Heating & Pipework", img: "/project-heating-pipework.webp", tall: true },
   { title: "Dean Village Townhouse", img: u("1632143697739-5559b57ac985", 1100), tall: false },
   { title: "Morningside Loft", img: u("1621362660850-a2554b580b41", 1100), tall: true },
   { title: "Royal Mile Heating & Rewire", img: u("1669725341213-7379ff6c90d5", 1100), tall: false },
   { title: "Bruntsfield Sash & Glazing", img: u("1631048498692-af6262577031", 1100), tall: true },
+  { title: "Glow-worm Boiler Install", img: "/project-boiler-install.webp", tall: true },
   { title: "Grange Villa Renovation", img: u("1621983209348-7b5a63f23866", 1100), tall: false },
 ];
 
