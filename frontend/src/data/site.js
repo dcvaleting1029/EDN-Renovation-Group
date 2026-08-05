@@ -60,6 +60,7 @@ export const TESTIMONIALS = [
 ];
 
 export const GALLERY = [
+  { title: "Rear Extension", img: "/project-rear-extension.webp", tall: true },
   { title: "New Town Kitchen", img: u("1714860534425-7ce04e013dec", 1100), tall: true },
   { title: "Stockbridge Bathroom", img: u("1661107259637-4e1c55462428", 1100), tall: false },
   { title: "Dean Village Townhouse", img: u("1632143697739-5559b57ac985", 1100), tall: false },
