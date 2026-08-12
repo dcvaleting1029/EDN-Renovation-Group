@@ -1,16 +1,18 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, Header, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 import asyncio
+import hmac
+import jwt
 import resend
 from pathlib import Path
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from typing import List, Optional
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 
 ROOT_DIR = Path(__file__).parent
@@ -31,6 +33,34 @@ api_router = APIRouter(prefix="/api")
 resend.api_key = os.environ.get('RESEND_API_KEY')
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
 ENQUIRY_RECIPIENT = os.environ.get('ENQUIRY_RECIPIENT')
+
+# Admin auth config
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')
+JWT_SECRET = os.environ.get('JWT_SECRET')
+JWT_ALGORITHM = "HS256"
+
+
+def create_admin_token() -> str:
+    payload = {
+        "role": "admin",
+        "exp": datetime.now(timezone.utc) + timedelta(days=7),
+    }
+    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
+
+
+def verify_admin(authorization: Optional[str] = Header(None)):
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    token = authorization[7:]
+    try:
+        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        if payload.get("role") != "admin":
+            raise HTTPException(status_code=401, detail="Invalid token")
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Session expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    return True
 
 
 def _build_enquiry_email(enquiry: "Enquiry") -> str:
@@ -104,6 +134,10 @@ class EnquiryCreate(BaseModel):
     message: Optional[str] = ""
 
 
+class AdminLogin(BaseModel):
+    password: str
+
+
 # ---------- Routes ----------
 @api_router.get("/")
 async def root():
@@ -140,8 +174,15 @@ async def create_enquiry(input: EnquiryCreate):
     return enquiry
 
 
+@api_router.post("/admin/login")
+async def admin_login(input: AdminLogin):
+    if not ADMIN_PASSWORD or not hmac.compare_digest(input.password, ADMIN_PASSWORD):
+        raise HTTPException(status_code=401, detail="Incorrect password")
+    return {"token": create_admin_token()}
+
+
 @api_router.get("/enquiries", response_model=List[Enquiry])
-async def get_enquiries():
+async def get_enquiries(_: bool = Depends(verify_admin)):
     enquiries = await db.enquiries.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
     for e in enquiries:
         if isinstance(e['created_at'], str):
