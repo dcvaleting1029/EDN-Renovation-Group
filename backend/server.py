@@ -193,10 +193,11 @@ async def get_enquiries():
 # Include the router in the main app
 app.include_router(api_router)
 
-allowed_origins = [
-    "https://ednrenovationgroup.com",
-    "https://www.ednrenovationgroup.com",
-]
+cors_origins_str = os.environ.get('CORS_ORIGINS', '*')
+if cors_origins_str == '*':
+    allowed_origins = ['*']
+else:
+    allowed_origins = [origin.strip() for origin in cors_origins_str.split(',') if origin.strip()]
 
 app.add_middleware(
     CORSMiddleware,
