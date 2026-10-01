@@ -79,7 +79,7 @@ export const Navigation = () => {
         <div className="flex items-center gap-3">
           <a
             data-testid="nav-cta-quote"
-            href="tel:07876332968"
+            href="tel:+447876332968"
             className="hidden rounded-none bg-edn-ink px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_8px_24px_rgba(17,17,17,0.25)] transition-all duration-300 hover:bg-black hover:scale-[1.04] sm:block"
           >
             07876 332968
