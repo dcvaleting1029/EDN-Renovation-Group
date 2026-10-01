@@ -143,7 +143,7 @@ export const Hero = ({ revealed }) => {
           <button
             data-testid="hero-cta-quote"
             onClick={() => scrollTo("contact")}
-            className="group flex items-center gap-3 rounded-full bg-edn-ink px-8 py-4 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_12px_34px_rgba(17,17,17,0.28)] transition-all duration-300 hover:scale-[1.05] hover:bg-black animate-breathe"
+            className="group flex items-center gap-3 rounded-full bg-edn-ink px-8 py-4 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_12px_34px_rgba(17,17,17,0.28)] transition-all duration-300 hover:scale-[1.05] hover:bg-black"
           >
             Get Free Quote
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />

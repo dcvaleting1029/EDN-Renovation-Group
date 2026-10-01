@@ -77,13 +77,13 @@ export const Navigation = () => {
         </ul>
 
         <div className="flex items-center gap-3">
-          <button
+          <a
             data-testid="nav-cta-quote"
-            onClick={() => scrollTo("contact")}
+            href="tel:07876332968"
             className="hidden rounded-full bg-edn-ink px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-[0_8px_24px_rgba(17,17,17,0.25)] transition-all duration-300 hover:bg-black hover:scale-[1.04] sm:block"
           >
-            Get Free Quote
-          </button>
+            07876 332968
+          </a>
           <button
             data-testid="nav-mobile-toggle"
             onClick={() => setOpen((v) => !v)}
