@@ -1,0 +1,50 @@
+{
+  "summary": "Tested EDN enquiry flow (backend + frontend). Everything works EXCEPT the primary objective: Resend email send. The current backend process logs 'Resend not configured; skipping enquiry email.' because RESEND_API_KEY is MISSING from /app/backend/.env. Prior successful sends in logs (ids 01a129c6..., 01a12a01..., 01a12a03..., at 07:04 / 07:51 / 08:03 / 08:08 / 08:10) came from a previous process that had the key loaded in memory; after a hot-reload at 08:12 the new process loaded the on-disk .env and no longer has the key. The user said 'a new Resend API key was just installed' but it was never persisted to /app/backend/.env. All other review bullets pass: enquiry save to Mongo, GET /api/enquiries lists it, /admin shows it, DELETE works, non-EH postcode (G1 1AA) rejected with 400 'We currently only cover Edinburgh (EH) postcodes.', frontend postcode auto-uppercases.",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "POST /api/enquiries -> send_enquiry_email",
+        "issue": "RESEND_API_KEY is missing from /app/backend/.env. Current backend process logs: 'Resend not configured; skipping enquiry email.' Email notifications to ednrenovationgroup@gmail.com are NOT being sent after the latest reload. The primary objective of this review (confirm new Resend key works) is BLOCKED.",
+        "priority": "CRITICAL"
+      }
+    ],
+    "minor": [
+      {
+        "endpoint": "GET /api/enquiries, DELETE /api/enquiries/{id}",
+        "issue": "Both endpoints are completely public (no auth check). /app/backend/server.py lines 185-199 have no Depends/token verification. Admin login exists and issues a JWT but the list/delete routes never validate it. Review states 'Admin page /admin is currently public' so this may be intentional, but exposing full lead PII (name/email/phone/postcode/message) publicly is a GDPR risk and anyone can delete leads. Recommend adding token dependency."
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_enquiries.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "CRITICAL: Add RESEND_API_KEY=<new key> to /app/backend/.env and restart the backend (sudo supervisorctl restart backend). After restart, submit a test enquiry and confirm /var/log/supervisor/backend.err.log shows 'Enquiry email sent to [ednrenovationgroup@gmail.com]: <uuid>' with NO 'API key is invalid' / 'Failed to send'.",
+    "Consider: Protect GET /api/enquiries and DELETE /api/enquiries/{id} with the existing JWT admin token (currently fully public — lead PII is exposed)."
+  ],
+  "critical_code_review_comments": [
+    "server.py:33 reads RESEND_API_KEY only at import time; a missing/invalid key silently degrades to a warning. Fine, but consider surfacing this on an /api/health endpoint so misconfiguration is visible.",
+    "server.py:185-199 GET /enquiries and DELETE /enquiries/{id} are unauthenticated despite admin login existing — exposes lead PII and allows anonymous deletion.",
+    "server.py: no rate limiting on POST /api/enquiries — spam/abuse risk for a public contact form.",
+    "No pagination on GET /api/enquiries (hard-coded to_list(1000)) — will silently drop records past 1000."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_enquiries.py"
+  ],
+  "success_rate": {
+    "backend": "87% (7/8 pytest tests pass; the only failure is the Resend email send which is the subject of this review)",
+    "frontend": "100% (postcode auto-uppercase, non-EH rejection error toast, admin page lists 13 enquiries with delete buttons all confirmed via Playwright)"
+  },
+  "test_credentials": "Admin password from backend/.env: Chris12345",
+  "seed_data_creation": "Created several TEST_* enquiries during testing (TEST_Resend_*, TEST_ToDelete_*, TEST_NonEH, TEST_BadEmail). Delete-flow test cleans up its own record; a handful of TEST_* remain visible on /admin and can be deleted via the admin UI if desired.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "After the main agent adds RESEND_API_KEY to /app/backend/.env and restarts backend, re-run `pytest /app/backend/tests/test_enquiries.py -v`. The one currently-failing test (test_create_valid_eh_postcode) tails /var/log/supervisor/backend.err.log for 'Enquiry email sent to' — it will pass once the key is loaded. All other 7 tests already pass. Note: Resend is in test mode so emails only deliver to ednrenovationgroup@gmail.com (the verified address) — this is expected per the review brief.",
+  "rca of the issue": "RCA: /app/backend/.env contains MONGO_URL, DB_NAME, CORS_ORIGINS, SENDER_EMAIL, ENQUIRY_RECIPIENT, ADMIN_PASSWORD, JWT_SECRET — but NOT RESEND_API_KEY. server.py line 19 does load_dotenv(ROOT_DIR/'.env') and line 33 does `resend.api_key = os.environ.get('RESEND_API_KEY')` which resolves to None. In send_enquiry_email (line 85) this triggers the early-return warning. Earlier process (PID 1876/1222) had the key in its environment (likely set via `export RESEND_API_KEY=...` before supervisorctl restart, hence the successful sends at 07:04/07:51/08:03/08:08/08:10). After WatchFiles auto-reloaded the backend at 08:12 due to a server.py change, the new child process only has what's in .env + supervisor's `environment=` directive (which only sets APP_URL/INTEGRATION_PROXY_URL) — so RESEND_API_KEY was lost. Reproduction: `curl -X POST $BACKEND/api/enquiries -d '{...valid payload with EH postcode...}'` returns 200 but log shows 'Resend not configured; skipping enquiry email.' Mitigation: append `RESEND_API_KEY=\"re_...\"` to /app/backend/.env and `sudo supervisorctl restart backend`."
+}
