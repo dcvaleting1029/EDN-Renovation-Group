@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { RefreshCw, ArrowLeft, Inbox } from "lucide-react";
+import { RefreshCw, ArrowLeft, Inbox, Trash2 } from "lucide-react";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 export default function Admin() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [deletingId, setDeletingId] = useState(null);
 
   const load = async () => {
     setLoading(true);
@@ -18,6 +19,19 @@ export default function Admin() {
       setItems([]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const remove = async (id) => {
+    if (!window.confirm("Delete this enquiry? This cannot be undone.")) return;
+    setDeletingId(id);
+    try {
+      await axios.delete(`${API}/enquiries/${id}`);
+      setItems((prev) => prev.filter((e) => e.id !== id));
+    } catch (e) {
+      alert("Could not delete. Please try again.");
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -54,7 +68,19 @@ export default function Admin() {
               <div key={e.id} className="rounded-[24px] border border-edn-divider bg-white p-6 shadow-sm" data-testid="admin-item">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <h3 className="font-serif text-2xl text-edn-ink">{e.name}</h3>
-                  <span className="text-xs text-edn-muted">{new Date(e.created_at).toLocaleString()}</span>
+                  <div className="flex items-center gap-4">
+                    <span className="text-xs text-edn-muted">{new Date(e.created_at).toLocaleString()}</span>
+                    <button
+                      onClick={() => remove(e.id)}
+                      disabled={deletingId === e.id}
+                      data-testid={`admin-delete-${e.id}`}
+                      aria-label="Delete enquiry"
+                      className="flex items-center gap-1.5 rounded-full border border-edn-divider px-3 py-1.5 text-xs text-edn-muted transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-600 disabled:opacity-50"
+                    >
+                      <Trash2 size={14} />
+                      {deletingId === e.id ? "Deleting..." : "Delete"}
+                    </button>
+                  </div>
                 </div>
                 <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-edn-bronze">
                   <a href={`mailto:${e.email}`} className="hover:underline">{e.email}</a>

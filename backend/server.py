@@ -85,16 +85,17 @@ async def send_enquiry_email(enquiry: "Enquiry"):
     if not resend.api_key or not SENDER_EMAIL or not ENQUIRY_RECIPIENT:
         logger.warning("Resend not configured; skipping enquiry email.")
         return
+    recipients = [r.strip() for r in ENQUIRY_RECIPIENT.split(",") if r.strip()]
     params = {
         "from": SENDER_EMAIL,
-        "to": [ENQUIRY_RECIPIENT],
+        "to": recipients,
         "reply_to": enquiry.email,
         "subject": f"New Enquiry — {enquiry.name}",
         "html": _build_enquiry_email(enquiry),
     }
     try:
         result = await asyncio.to_thread(resend.Emails.send, params)
-        logger.info(f"Enquiry email sent: {result.get('id')}")
+        logger.info(f"Enquiry email sent to {recipients}: {result.get('id')}")
     except Exception as e:
         logger.error(f"Failed to send enquiry email: {e}")
 
@@ -188,6 +189,14 @@ async def get_enquiries():
         if isinstance(e['created_at'], str):
             e['created_at'] = datetime.fromisoformat(e['created_at'])
     return enquiries
+
+
+@api_router.delete("/enquiries/{enquiry_id}")
+async def delete_enquiry(enquiry_id: str):
+    result = await db.enquiries.delete_one({"id": enquiry_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Enquiry not found")
+    return {"success": True, "id": enquiry_id}
 
 
 # Include the router in the main app
