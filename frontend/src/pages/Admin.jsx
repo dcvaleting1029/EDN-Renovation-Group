@@ -15,6 +15,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
   const [confirmId, setConfirmId] = useState(null);
+  const [deleteError, setDeleteError] = useState("");
 
   const authHeader = (tok) => ({ headers: { Authorization: `Bearer ${tok}` } });
 
@@ -63,11 +64,19 @@ export default function Admin() {
 
   const remove = async (id) => {
     setDeletingId(id);
+    setDeleteError("");
     try {
       await axios.delete(`${API}/enquiries/${id}`, authHeader(token));
       setItems((prev) => prev.filter((e) => e.id !== id));
       setConfirmId(null);
     } catch (e) {
+      if (e?.response?.status === 401) {
+        localStorage.removeItem(TOKEN_KEY);
+        setToken("");
+        setAuthError("Session expired. Please sign in again to delete.");
+      } else {
+        setDeleteError("Could not delete that enquiry. Please try again.");
+      }
       setConfirmId(null);
     } finally {
       setDeletingId(null);
@@ -142,6 +151,12 @@ export default function Admin() {
             </button>
           </div>
         </div>
+
+        {deleteError && (
+          <p data-testid="admin-delete-error" className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
+            {deleteError}
+          </p>
+        )}
 
         {loading ? (
           <p className="text-edn-muted">Loading...</p>
