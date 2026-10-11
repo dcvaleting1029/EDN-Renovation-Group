@@ -183,7 +183,7 @@ async def admin_login(input: AdminLogin):
 
 
 @api_router.get("/enquiries", response_model=List[Enquiry])
-async def get_enquiries():
+async def get_enquiries(_: bool = Depends(verify_admin)):
     enquiries = await db.enquiries.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
     for e in enquiries:
         if isinstance(e['created_at'], str):
@@ -192,7 +192,7 @@ async def get_enquiries():
 
 
 @api_router.delete("/enquiries/{enquiry_id}")
-async def delete_enquiry(enquiry_id: str):
+async def delete_enquiry(enquiry_id: str, _: bool = Depends(verify_admin)):
     result = await db.enquiries.delete_one({"id": enquiry_id})
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Enquiry not found")
